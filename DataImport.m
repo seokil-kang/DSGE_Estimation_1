@@ -30,9 +30,9 @@ end
 FredDataTable = rmmissing(FredDataTable);
 
 % data transforming
-Obs = array2timetable(diff(log(FredDataTable.GDP)-log(FredDataTable.POP))*1e2,"VariableNames","PerCapitaRealOutputGrowth","RowTimes",FredDataTable.Time(2:end));
-Obs.AnnualizedInflation = diff(log(FredDataTable.CPI))*4e2;
-Obs.FederalFundsRate = FredDataTable.FFR(2:end);
+Obs = array2timetable(diff(log(FredDataTable.GDP)-log(FredDataTable.POP))*1e2,"VariableNames","YGR","RowTimes",FredDataTable.Time(2:end));
+Obs.INFL = diff(log(FredDataTable.CPI))*4e2;
+Obs.INT= FredDataTable.FFR(2:end);
 
 % print figure of obs?
 if false
@@ -42,9 +42,9 @@ figure(Name="Macro Variables",Color="w",Position=[200,200,[1600,900]*.6])
 tiledlayout(1,1,"TileSpacing","compact","Padding","compact")
 nexttile;
 hold on
-p1=plot(Obs.Time,Obs.PerCapitaRealOutputGrowth,LineWidth=LW,DisplayName="Y");
-p2=plot(Obs.Time,Obs.AnnualizedInflation,LineWidth=LW,DisplayName="\pi");
-p3=plot(Obs.Time,Obs.FederalFundsRate,LineWidth=LW,DisplayName="R");
+p1=plot(Obs.Time,Obs.YGR,LineWidth=LW,DisplayName="Y");
+p2=plot(Obs.Time,Obs.INFL,LineWidth=LW,DisplayName="\pi");
+p3=plot(Obs.Time,Obs.INT,LineWidth=LW,DisplayName="R");
 hold off
 set(gca,fontsize=FTSZ)
 recessionplot

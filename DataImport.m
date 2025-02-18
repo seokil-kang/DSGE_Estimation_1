@@ -52,4 +52,5 @@ legend([p1,p2,p3],Orientation="horizontal",Location="northoutside",NumColumns=3,
 end
 
 % save obs as a csv file
+delete obs.csv
 writetable(timetable2table(Obs,ConvertRowTimes=false),"obs.csv")

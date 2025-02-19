@@ -34,6 +34,7 @@ p1=plot(Obs.Time,Obs.YGR,LineWidth=LW,DisplayName="Y");
 p2=plot(Obs.Time,Obs.INFL,LineWidth=LW,DisplayName="\pi");
 p3=plot(Obs.Time,Obs.INT,LineWidth=LW,DisplayName="R");
 hold off
+xlim([datetime(2000,1,1) datetime(2024,10,1)])
 set(gca,fontsize=FTSZ)
 % recessionplot
 legend([p1,p2,p3],Orientation="horizontal",Location="northoutside",NumColumns=3,Box="off")
@@ -41,5 +42,4 @@ end
 
 % save obs as a csv file
 delete obs.csv
-Obs = Obs(datetime():datetime(),:);
 writetable(timetable2table(Obs,ConvertRowTimes=false),"obs.csv")

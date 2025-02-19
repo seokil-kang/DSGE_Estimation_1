@@ -35,7 +35,7 @@ Obs.INFL = diff(log(FredDataTable.CPI))*4e2;
 Obs.INT= FredDataTable.FFR(2:end);
 
 % print figure of obs?
-if false
+if true
 LW = 3;
 FTSZ = 18;
 figure(Name="Macro Variables",Color="w",Position=[200,200,[1600,900]*.6])
@@ -46,8 +46,9 @@ p1=plot(Obs.Time,Obs.YGR,LineWidth=LW,DisplayName="Y");
 p2=plot(Obs.Time,Obs.INFL,LineWidth=LW,DisplayName="\pi");
 p3=plot(Obs.Time,Obs.INT,LineWidth=LW,DisplayName="R");
 hold off
+xlim([datetime(2000,1,1) datetime(2024,10,1)])
 set(gca,fontsize=FTSZ)
-recessionplot
+% recessionplot
 legend([p1,p2,p3],Orientation="horizontal",Location="northoutside",NumColumns=3,Box="off")
 end
 

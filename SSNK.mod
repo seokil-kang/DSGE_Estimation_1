@@ -66,10 +66,10 @@ kappa,beta_pdf,0.50,0.25;
 psi1,gamma_pdf,1.50,0.25;
 psi2,gamma_pdf,0.50,0.25;
 rhoR,beta_pdf,0.50,0.25;
-rhog,beta_pdf,0.50,0.25;
+rhog,beta_pdf,0.50,0.27;
 rhoz,beta_pdf,0.50,0.25;
 stderr eR,inv_gamma_pdf,0.40,10.00;
-stderr eg,inv_gamma_pdf,1.00,10.00;
+stderr eg,inv_gamma_pdf,2.00,10.00;
 stderr ez,inv_gamma_pdf,0.50,10.00;
 end;
 

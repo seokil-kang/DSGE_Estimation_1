@@ -39,19 +39,28 @@ if true
 LW = 3;
 FTSZ = 18;
 figure(Name="Macro Variables",Color="w",Position=[200,200,[1600,900]*.6])
-tiledlayout(1,1,"TileSpacing","compact","Padding","compact")
+tiledlayout(3,1,"TileSpacing","compact","Padding","compact")
 nexttile;
-hold on
-p1=plot(Obs.Time,Obs.YGR,LineWidth=LW,DisplayName="Y");
-p2=plot(Obs.Time,Obs.INFL,LineWidth=LW,DisplayName="\pi");
-p3=plot(Obs.Time,Obs.INT,LineWidth=LW,DisplayName="R");
-hold off
-xlim([datetime(2000,1,1) datetime(2024,10,1)])
-set(gca,fontsize=FTSZ)
-% recessionplot
-legend([p1,p2,p3],Orientation="horizontal",Location="northoutside",NumColumns=3,Box="off")
+p1=plot(Obs.Time,Obs.YGR,Color="k",LineWidth=LW,DisplayName="Y");
+xlim([datetime(1983,1,1),datetime(2002,10,1)])
+ylim([-2 2])
+set(gca,fontsize=FTSZ,xgrid="on",ygrid="on")
+title("Quarterly Output Growth")
+nexttile;
+p2=plot(Obs.Time,Obs.INFL,Color="k",LineWidth=LW,DisplayName="\pi");
+xlim([datetime(1983,1,1),datetime(2002,10,1)])
+ylim([-2 8])
+set(gca,fontsize=FTSZ,xgrid="on",ygrid="on")
+title("Quarterly Inflation")
+nexttile;
+p3=plot(Obs.Time,Obs.INT,Color="k",LineWidth=LW,DisplayName="R");
+xlim([datetime(1983,1,1),datetime(2002,10,1)])
+ylim([0 12])
+set(gca,fontsize=FTSZ,xgrid="on",ygrid="on")
+title("Federal Funds Rate")
 end
 
 % save obs as a csv file
 delete obs.csv
+Obs=Obs(datetime(1983,1,1):datetime(2002,10,1),:);
 writetable(timetable2table(Obs,ConvertRowTimes=false),"obs.csv")
